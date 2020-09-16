@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
-* Студент: [Юрий  Пустовой](https://up.htmlacademy.ru/javascript/21/user/680133).
-* Наставник: `Неизвестно`.
+- Студент: [Юрий Пустовой](https://up.htmlacademy.ru/javascript/21/user/680133).
+- Наставник: [Даниил Стерликов](https://htmlacademy.ru/profile/id1588317).
 
 ---
 
