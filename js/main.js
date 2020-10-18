@@ -17,39 +17,41 @@ const names = ["Юрий",
                "Светлана"
                ];
 
-const photos = [];
-const commentsArr = [];
+let photos = [];
+let commentsArr = [];
+
 const randomNumber = function(min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
 };
 
 const renderPhotos = function() {
   for (let i = 0; i < 25; i++) {
-    const photo = {
-        url : photos/{i}.jpg,
-        decription : 'описание фотографии',
+    let photo = {
+        url : "../photos/{i}.jpg",
+        decription : "описание фотографии",
         likes : randomNumber(15, 200),
         comments : commentsArr
       }
     photos.push(photo);
 
     for (let g = 0; g < 6; g++) {
-      const comment = {
-          avatar: "img/avatar-{i}.svg",
+      let comment = {
+          avatar: "../img/avatar-{i}.svg",
           message: messages[i],
           name: names[i] 
         }
       commentsArr.push(comment);
     }
   }
+  return photos;
 };
 
-const renderPhotoElements = function(element) {
+const renderPhotoElements = function(photos) {
   const photoElement = pictureTemplate.cloneNode(true);
 
-  photoElement.querySelector('.picture__img').src = element.url;
-  photoElement.querySelector('.picture__likes').textContent = element.likes;
-  photoElement.querySelector('.picture__comments').textContent = element.comments;
+  photoElement.querySelector('.picture__img').src = photos.url;
+  photoElement.querySelector('.picture__likes').textContent = photos.likes;
+  photoElement.querySelector('.picture__comments').textContent = photos.comments;
 
   return photoElement;
 }
@@ -61,3 +63,7 @@ const createPhotoElements = function () {
   }
   picturesBlock.appendChild(fragment);
 };
+
+renderPhotos();
+renderPhotoElements(photos);
+createPhotoElements();
