@@ -24,7 +24,7 @@ const randomNumber = function (min, max) {
 const generatePhotos = function () {
   let photos = [];
   let commentsArr = [];
-  for (let i = 0; i < 25; i++) {
+  for (let i = 1; i < 26; i++) {
     let photo = {
       url: `photos/${i}.jpg`,
       decription: `описание фотографии`,
@@ -32,9 +32,9 @@ const generatePhotos = function () {
       comments: commentsArr
     };
     photos.push(photo);
-    for (let g = 0; g < 6; g++) {
+    for (let g = 1; g < 7; g++) {
       let comment = {
-        avatar: `img/avatar-{i}.svg`,
+        avatar: `img/avatar-${i}.svg`,
         message: messages[i],
         name: names[i]
       };
@@ -49,16 +49,16 @@ const renderPhotoElements = function (photo) {
 
   photoElement.querySelector(`.picture__img`).src = photo.url;
   photoElement.querySelector(`.picture__likes`).textContent = photo.likes;
-  photoElement.querySelector(`.picture__comments`).textContent = photo.comments;
+  photoElement.querySelector(`.picture__comments`).textContent = photo.comment;
 
   return photoElement;
 };
 
 const createPhotoElements = function (array) {
   const fragment = document.createDocumentFragment();
-  for (let i = 0; i < array.length; i++) {
-    fragment.appendChild(renderPhotoElements(array));
-  }
+  array.forEach(function (item) {
+    fragment.appendChild(renderPhotoElements(item));
+  });
   picturesBlock.appendChild(fragment);
 };
 
