@@ -16,6 +16,8 @@ const names = [`Юрий`,
   `Алена`,
   `Светлана`
 ];
+const NUMBER_PHOTOS = 26;
+const NUMBER_COMMENTS = 7;
 
 const randomNumber = function (min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
@@ -24,15 +26,8 @@ const randomNumber = function (min, max) {
 const generatePhotos = function () {
   let photos = [];
   let commentsArr = [];
-  for (let i = 1; i < 26; i++) {
-    let photo = {
-      url: `photos/${i}.jpg`,
-      decription: `описание фотографии`,
-      likes: randomNumber(15, 200),
-      comments: commentsArr
-    };
-    photos.push(photo);
-    for (let g = 1; g < 7; g++) {
+  for (let i = 1; i < NUMBER_PHOTOS; i++) {
+    for (let g = 1; g < NUMBER_COMMENTS; g++) {
       let comment = {
         avatar: `img/avatar-${i}.svg`,
         message: messages[i],
@@ -40,6 +35,13 @@ const generatePhotos = function () {
       };
       commentsArr.push(comment);
     }
+    let photo = {
+      url: `photos/${i}.jpg`,
+      description: `описание фотографии`,
+      likes: randomNumber(15, 200),
+      comments: commentsArr
+    };
+    photos.push(photo);
   }
   return photos;
 };
