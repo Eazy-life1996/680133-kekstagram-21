@@ -2,6 +2,8 @@
 
 const picturesBlock = document.querySelector(`.pictures`);
 const pictureTemplate = document.querySelector(`#picture`);
+const bigPicture = document.querySelector(`.big-picture`);
+const body = document.querySelector(`body`);
 const messages = [`Всё отлично!`,
   `В целом всё неплохо. Но не всё.`,
   `Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.`,
@@ -66,3 +68,18 @@ const createPhotoElements = function (array) {
 
 let photos = generatePhotos();
 createPhotoElements(photos);
+
+
+const createBigPicture = function (picture) {
+  bigPicture.classList.remove(`hidden`);
+  bigPicture.querySelector(`.big-picture__img`).src = picture.url;
+  bigPicture.querySelector(`.likes-count`).textContent = picture.likes;
+  bigPicture.querySelector(`.comments-count`).textContent = picture.comment;
+  bigPicture.querySelector(`.social__caption`).textContent = picture.description;
+  bigPicture.querySelector(`.social__comment-count`).classList.add(`hidden`);
+  bigPicture.querySelector(`.comments-loader`).classList.add(`hidden`);
+  body.classList.add(`modal-open`);
+  return bigPicture;
+};
+
+createBigPicture(photos[0]);
